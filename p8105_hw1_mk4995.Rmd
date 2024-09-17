@@ -2,15 +2,11 @@
 title: "P8105 HW1"
 author: "Maya Krishnamoorthy"
 date: "2024-09-17"
-output: html_document
+output: github_document
 ---
 
 ## Problem 1
-First download a package containing the `penguins` dataset.
-
-``` {r message=FALSE}
-install.packages("palmerpenguins")
-```
+First download a package containing the `penguins` dataset in the console.
 
 Next, load the `penguins` dataset:
 
@@ -19,6 +15,25 @@ data("penguins", package = "palmerpenguins")
 ```
 
 ``` {r}
-names(penguins)
 colnames(penguins)
+penguins_desc = paste("The data in this dataset holds information about penguins. It contains the following variables: species, bll length in mm, bill depth in mm, flipper length in mm, island, sex, and body mass in grams. The `penguins` dataset contains", nrow(penguins), "rows and", ncol(penguins), "columns. The mean flipper length of penguins in this dataset is", mean(penguins$flipper_length_mm), "mm.")
+
+penguins_desc
+```
+
+Make a scatterplot of `flipper_length_mm` (y) vs `bill_Length_mm` (x). Color points using the `species` variable.
+
+``` {r echo=FALSE}
+library(tidyverse)
+
+penguins_scatter = ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) +
+  geom_point()
+
+penguins_scatter
+```
+
+Export the scatterplot to the project directory using `ggsave`.
+
+``` {r}
+
 ```
