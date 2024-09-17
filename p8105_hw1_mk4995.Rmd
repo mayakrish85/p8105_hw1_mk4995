@@ -35,5 +35,5 @@ penguins_scatter
 Export the scatterplot to the project directory using `ggsave`.
 
 ``` {r}
-
+ggsave("penguins_scatter.png", plot = penguins_scatter)
 ```
