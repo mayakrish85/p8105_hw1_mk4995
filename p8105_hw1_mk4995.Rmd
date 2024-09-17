@@ -15,7 +15,6 @@ data("penguins", package = "palmerpenguins")
 ```
 
 ``` {r}
-colnames(penguins)
 penguins_desc = paste("The data in this dataset holds information about penguins. It contains the following variables: species, bll length in mm, bill depth in mm, flipper length in mm, island, sex, and body mass in grams. The `penguins` dataset contains", nrow(penguins), "rows and", ncol(penguins), "columns. The mean flipper length of penguins in this dataset is", mean(penguins$flipper_length_mm), "mm.")
 
 penguins_desc
@@ -23,7 +22,7 @@ penguins_desc
 
 Make a scatterplot of `flipper_length_mm` (y) vs `bill_Length_mm` (x). Color points using the `species` variable.
 
-``` {r echo=FALSE}
+``` {r}
 library(tidyverse)
 
 penguins_scatter = ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) +
@@ -34,6 +33,19 @@ penguins_scatter
 
 Export the scatterplot to the project directory using `ggsave`.
 
-``` {r}
+``` {r message=FALSE}
 ggsave("penguins_scatter.png", plot = penguins_scatter)
+```
+
+## Problem 2
+Create a dataframe.
+
+```{r}
+# NOT YET COMPLETED
+hw_df = tibble(
+  sample = rnorm(10),
+  sample_log = (sample > 0),
+  char_vec = c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'),
+  factor_vec = factor()
+)
 ```
