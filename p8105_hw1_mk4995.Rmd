@@ -6,46 +6,59 @@ output: github_document
 ---
 
 ## Problem 1
-First download a package containing the `penguins` dataset in the console.
 
-Next, load the `penguins` dataset:
+``` {r setup, echo=FALSE, message=FALSE}
+library(tidyverse)
+```
 
-``` {r message=FALSE}
+*Load the `penguins` dataset:*
+
+``` {r}
 data("penguins", package = "palmerpenguins")
 ```
 
-``` {r}
-penguins_desc = paste("The data in this dataset holds information about penguins. It contains the following variables: species, bll length in mm, bill depth in mm, flipper length in mm, island, sex, and body mass in grams. The `penguins` dataset contains", nrow(penguins), "rows and", ncol(penguins), "columns. The mean flipper length of penguins in this dataset is", mean(penguins$flipper_length_mm), "mm.")
+``` {r, message=FALSE}
+nrow_penguins = nrow(penguins)
+ncol_penguins = ncol(penguins)
+flipper_length_mm_mean = mean(pull(penguins, flipper_length_mm), na.rm=TRUE)
 
-penguins_desc
 ```
 
-Make a scatterplot of `flipper_length_mm` (y) vs `bill_Length_mm` (x). Color points using the `species` variable.
+The data in this dataset holds information about penguins. It contains the following **variables**: species, bll length in mm, bill depth in mm, flipper length in mm, island, sex, and body mass in grams. The `penguins` dataset contains **`r nrow(penguins)` rows** and **`r ncol(penguins)` columns**. The **mean flipper length** of penguins in this dataset is **`r flipper_length_mm_mean` mm**.
 
-``` {r}
-library(tidyverse)
+*Make a scatterplot of `flipper_length_mm` (y) vs `bill_Length_mm` (x). Color points using the `species` variable.*
 
+``` {r, message=FALSE}
 penguins_scatter = ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) +
   geom_point()
 
 penguins_scatter
 ```
 
-Export the scatterplot to the project directory using `ggsave`.
+*Export the scatterplot to the project directory using `ggsave`.*
 
-``` {r message=FALSE}
+``` {r, message=FALSE}
 ggsave("penguins_scatter.png", plot = penguins_scatter)
 ```
 
 ## Problem 2
-Create a dataframe.
+*Create a dataframe.*
 
 ```{r}
 # NOT YET COMPLETED
 hw_df = tibble(
   sample = rnorm(10),
   sample_log = (sample > 0),
-  char_vec = c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'),
-  factor_vec = factor()
+  char_vec = sample(c(letters), 10),
+  factor_vec = factor(sample(c("Level1", "Level2", "Level3"), 10, replace=TRUE))
 )
 ```
+
+*Try taking the mean of each variable in the dataframe. What works and what doesn’t?*
+
+```{r}
+
+```
+
+
+
