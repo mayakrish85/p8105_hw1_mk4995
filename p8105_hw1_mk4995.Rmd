@@ -52,13 +52,37 @@ hw_df = tibble(
   char_vec = sample(c(letters), 10),
   factor_vec = factor(sample(c("Level1", "Level2", "Level3"), 10, replace=TRUE))
 )
+
+class(pull(hw_df, sample))
 ```
 
 *Try taking the mean of each variable in the dataframe. What works and what doesn’t?*
 
 ```{r}
+sample_mean = mean(pull(hw_df, sample))
+logical_mean = mean(pull(hw_df, sample_log))
+char_mean = mean(pull(hw_df, char_vec))
+factor_mean = mean(pull(hw_df, factor_vec))
 
+# Print means
+sample_mean
+logical_mean
+char_mean
+factor_mean
 ```
 
+R can compute the means for the `sample` and `logical` variables. The mean of the random sample vector is `r sample_mean` and the mean of the logical vector is `r logical_mean`. It cannot compute the means of the character vector or the factor vector.
 
+*Explicitly convert variables from one type to another.*
+
+``` {r message=FALSE}
+# For the logical variable
+as.numeric(pull(hw_df, sample_log))
+
+# For the character variable
+as.numeric(pull(hw_df, char_vec))
+
+# For the factor variable
+as.numeric(pull(hw_df, factor_vec))
+```
 
